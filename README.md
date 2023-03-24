@@ -1,61 +1,80 @@
-# "全国大学生操作系统比赛2023"相关信息
-## 事件
-- 2022.03.15：2023年度全国大学生操作系统比赛启动报名。
+# projX-software defined os
+### 项目名称
+支持快速重构的操作系统设计与原型实现
+### 项目描述
+
+泛在计算时代，需求和场景的频繁变化使操作系统面临快速重构的需求。现有操作系统中紧耦合的设计方式成为应对上述挑战的最大障碍。
+软件定义系统（Software Defined System）概念为解决这一问题提供了新思路。例如软件定义网络SDN利用分层思想，将网络数据面与控制面相分离，打破设备的封闭性，使得管理更加简单、动态和灵活。
+参考数据面与控制面分离思想，结合软件工程和操作系统基本特点，将操作系统看成“模块-通信”的组合，采用总线模型对操作系统进行快速可重构设计。
+实现快速可重构操作系统的基础是（1）降低系统组件间耦合程度；（2）根据不同的需求，提供控制修改的能力，以便可以灵活改变自身的结构，实现与特定需求相匹配的系统结构。
+对于组件解耦而言，将总线模型应用的操作系统结构一级的设计中，实现功能模块和通信管理模块的分离。
+比如通信管理模块的设计中，可以利用软件实现的总线机制作为传递消息的公共传输通道，设计标准化的总线通信接口以及总线控制机制，使发送端只需要向软总线发出消息而不用管消息如何被转发，充分降低组件间的耦合程度。
+对于控制分离而言，利用单独接口和更高阶的程序管理整个系统的控制行为，比如组件添加、通信和隔离方法。
+具体而言，将操作系统的功能模块视为总线的节点组件，在适配了总线接口后，组件可以集成到系统中。通过总线进行控制命令的传输，与其他组件进行协作完成处理。
+控制分离的手段可以更容易检查和管理系统模块行为，实现全局集中控制和分布高速转发。
+本项目计划通过对总线控制单元中的逻辑和策略进行修改，以及选取不同的系统组件进行总线连接，来达到快速重构操作系统的设计目标。
+同现有的应用于操作系统的软总线技术（比如，HarmonyOS利用分布式软总线技术）相比，本项目的思想是设计轻量级的总线连接和控制机制，从而摆脱系统构建时对基础设施的过多依赖（例如HarmonyOS的分布式软总线技术依赖网络协议栈）。
+本项目计划选取现有操作系统作为基础进行改造，重用其主要的功能代码，在相互剥离去耦合的基础上，加入新设计开发的规范化软总线接口和控制功能，使功能模块进行可重构，为用户根据使用场景去定义操作系统提供可能。
+
+本项目要求学生对于操作系统的基本原理和构成有深入的理解，并能对较简单的操作系统进行模块化解耦，根据需求特点设计实现软件化的通信机制，实现以总线模型为指导进行构建和快速重构的操作系统原型。
 
 
-# "全国大学生操作系统比赛2022"相关信息
-## 事件
-- 2022.02.28  2022年度全国大学生操作系统比赛发布比赛题目。
-- 2022.01.20  准备2022年度全国大学生操作系统比赛的参赛题目。功能挑战赛道主要是更新改进已有2021年OS题目和提出新的题目，可看[题目模板](https://github.com/oscomp/os-competition-info/blob/main/track2-proj-template.md)
-- 2022.01.19  2022年度全国大学生操作系统比赛正式发布[2022年操作系统大赛章程](https://pan.educg.net/api/v3/file/get/13120/OS-%E7%AB%A0%E7%A8%8B-20220117-1-%E6%9C%80%E7%BB%88%E7%A1%AE%E8%AE%A4%E7%89%88_20220119140621.pdf?sign=l7c4bNn0m_4ZJSq1gKWaisYUomIRMxLqgY7FSHIucw8%3D%3A0)和[2022年操作系统大赛技术方案](https://pan.educg.net/api/v3/file/get/13118/2022%E5%B9%B4%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E8%B5%9B%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88--%E7%A1%AE%E8%AE%A4%E7%89%88-1.pdf?sign=aoRqDw44k2dkQTb9PIs6Mmf_2EL6HVy6edYYvXdlo7Y%3D%3A0)，并开通[比赛报名通道](https://os.educg.net/)
+### 所属赛道
 
-# "全国大学生操作系统比赛2021"相关信息
-## 事件
-- 2021.08.23 2021操作系统大赛决赛评审圆满结束，公布获奖名单，[所有参赛项目开源](https://os.educg.net/)，一等奖项目也同步开源公布在[2021oscomp-best-kernel-design-impl](https://github.com/oscomp/2021oscomp-best-kernel-design-impl)
-- 2021.08.08 2021操作系统大赛决赛阶段[第三次技术报告和交流](https://github.com/oscomp/seminar16-20210808/blob/main/README.md)
-- 2021.08.01 2021操作系统大赛决赛阶段[第二次技术报告和交流](https://github.com/oscomp/seminar15-20210801/blob/main/README.md)
-- 2021.07.25 2021操作系统大赛决赛阶段[第一次技术报告和交流](https://github.com/oscomp/seminar14-20210725/blob/main/README.md)
+2022全国大学生操作系统比赛的“OS功能挑战”赛道
 
-### 初赛
-- 2021.05.23 2021操作系统大赛初赛阶段[第六次技术培训](https://github.com/oscomp/seminar12-20210523/blob/main/README.md)
-- 2021.05.16 2021操作系统大赛初赛阶段[第五次技术培训](https://github.com/oscomp/seminar11-20210516/blob/main/README.md)
-- 2021.05.09 2021操作系统大赛初赛阶段[第四次技术培训](https://github.com/oscomp/seminar10-20210509/blob/main/README.md)
-- 2021.05.02 2021操作系统大赛初赛阶段[第三次技术培训](https://github.com/oscomp/seminar9-20210502/blob/main/README.md)
-- 2021.04.25 2021操作系统大赛初赛阶段[第二次技术培训](https://github.com/oscomp/seminar8-20210425/blob/main/README.md)
-- 2012.04.19 [OS比赛调查-20210416的结果分析](./questionnaire-20210417.md)
-- 2021.04.18 [操作系统大赛技术报告会](https://github.com/oscomp/seminar7-20210418/blob/main/README.md)
-- 2021.04.11 [操作系统大赛技术培训](https://github.com/oscomp/seminar6-20210411/blob/main/README.md)
-- 2021.04.04 [操作系统大赛技术培训](https://github.com/oscomp/seminar5-20210404/blob/main/README.md)
-- 2021.03.28 [操作系统大赛技术培训](https://github.com/oscomp/seminar4-20210328/blob/main/README.md)
-- 2021.03.21 [操作系统设计赛技术培训](https://github.com/oscomp/seminar3-20210321/blob/main/README.md)
-- 2021.02.10 技术报告：[开源社区的汇聚](https://github.com/oscomp/seminar2-20210210/blob/main/README.md)
-- 2021.01.24 技术报告：[软件测试平台和内核动态跟踪工具](https://github.com/oscomp/seminar1-20210124/blob/main/README.md)
-- 2020.12.26 [关于2021全国大学生操作系统比赛的研讨会](https://github.com/oscomp/seminar0-20201226)
-- 2020.12.23 [操作系统比赛官网](https://os.educg.net/)建立
 
-## 2022
 
-### [2022比赛章程](https://gitlab.eduxiji.net/csc-os/os2022/-/blob/master/OS-%E7%AB%A0%E7%A8%8B-%E6%9C%80%E7%BB%88%E7%A1%AE%E8%AE%A4%E7%89%88.pdf)
+### 参赛要求
 
-### [2022比赛技术方案](https://gitlab.eduxiji.net/csc-os/os2022/-/blob/master/2022%E5%B9%B4%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E8%B5%9B%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88--%E7%A1%AE%E8%AE%A4%E7%89%88-1.pdf)
+- 以小组为单位参赛，最多三人一个小组，且小组成员是来自同一所高校的本科生或研究生（2022年春季学期或之后毕业的大一~大四的本科生或研究生）
+- 如学生参加了多个项目，参赛学生选择一个自己参加的项目参与评奖
+- 请遵循“2022全国大学生操作系统比赛”的章程和技术方案要求
 
-## 2021
-### [2021比赛章程](https://pan.educg.net/api/v3/file/get/1301/2021%E5%B9%B4%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B%E5%A4%A7%E8%B5%9B%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E8%B5%9B-%E7%AB%A0%E7%A8%8B-20200127.pdf?sign=8GlzF7I6_z5zTaNcgqjPKMsn3CBgEvtHOpa4IqwAWpc%3D%3A0)
 
-### [2021比赛技术方案](https://pan.educg.net/api/v3/file/get/1300/2021%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B%E5%9F%B9%E5%85%BB%E5%A4%A7%E8%B5%9B%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E8%B5%9B-%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88-20210127.pdf?sign=w3ADcMdXiIbVrY-5GpYzlKM67ppDzLbEHSMccar4uZY%3D%3A0)
 
-## 赛道
- - [OS内核实现](https://github.com/oscomp/oscomp-track1)
-   - [报名链接](https://os.educg.net)
- - [OS功能设挑战](https://github.com/oscomp/oscomp-track2)
-   - [题目列表和分类](https://shimo.im/sheets/oon62mm4gCAGfoWY/LlBB6/)（更新中）
-   - [报名链接](https://os.educg.net)
- 
-## 相关网站
-- [OS比赛](https://os.educg.net/)
-- ["龙芯杯"CPU比赛](http://www.nscscc.org)
-- ["华为毕昇杯"Compiler比赛](https://course.educg.net/acm/)
-- [全国高等院校计算机系统能力培养官方网站](http://www.csc-he.com)
+### 项目导师
 
-## [与比赛相关的一些OS实例/教程的参考信息](https://github.com/oscomp/os-competition-info/blob/main/ref-info.md)
+董攀  pandong@nudt.edu.cn
 
+
+
+### 难度
+
+难
+
+
+
+### 特征
+
+-  基于总线模型对操作系统进行快速可重构设计
+-  新型操作系统的松耦合以及可拓展性
+-  统一的总线通信协议以及接口实现
+
+
+### License
+
+任意开源license都可
+
+
+
+## 预期目标
+
+
+第0问: 多层总线模型框架
+
+- 分析总结总线模型和现有基于总线设计的操作系统的特点；
+- 设计多层总线模型框架并实现；
+- 撰写文档，对模型设计思想和合理性进行分析总结；
+
+第1问：操作系统可重构实现
+
+- 与导师协商，参考现有的系统模块代码，重新将每个模块进行封装；
+- 将模块与多层总线模型进行适配，使用多层总线的模型对操作系统进行可重构设计；
+- 照软件工程要求，依据代码设计完成实现文档的撰写；
+
+第2问：系统测试
+
+基于总线模型可重构操作系统，目的是避免紧耦合和单一隔离机制，提供统一的接口实现，提
+升操作系统的可扩展性、安全性和性能。 对构建的快速重构的操作系统原型进行功能测试，保
+证基于总线架构设计的操作系统功能的正确性。
