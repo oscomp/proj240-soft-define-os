@@ -1,4 +1,4 @@
-# projX-software defined os
+# proj240-software defined os
 ### 项目名称
 支持快速重构的操作系统设计与原型实现
 ### 项目描述
